@@ -19,7 +19,7 @@ export default function Login() {
     setError('');
 
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api';
       const endpoint = isLogin ? `${baseUrl}/auth/login` : `${baseUrl}/auth/register`;
       console.log('Making request to:', endpoint);
       console.log('Form data:', formData);

@@ -36,7 +36,7 @@ export default function AddBookmark() {
         tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
       };
 
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api';
       const response = await fetch(`${baseUrl}/links`, {
         method: 'POST',
         headers: {

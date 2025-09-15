@@ -33,7 +33,7 @@ export default function Dashboard() {
         return;
       }
 
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api';
       const response = await fetch(`${baseUrl}/auth/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
   const loadBookmarks = async (token: string) => {
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api';
       const response = await fetch(`${baseUrl}/links`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -80,7 +80,7 @@ export default function Dashboard() {
       const token = localStorage.getItem('authToken');
       if (!token) return;
 
-      const response = await fetch(`/api/links/${bookmarkId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api'}/links/${bookmarkId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -103,7 +103,7 @@ export default function Dashboard() {
       const token = localStorage.getItem('authToken');
       if (!token) return;
 
-      const response = await fetch(`/api/links/${bookmarkId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://linkkeeper-backend-sqqq.onrender.com/api'}/links/${bookmarkId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
