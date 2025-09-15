@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900" style={{backgroundColor: '#1f2937'}}>
         {/* Hero Section */}
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
