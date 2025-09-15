@@ -20,6 +20,9 @@ export default function Login() {
 
     try {
       const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+      console.log('Making request to:', endpoint);
+      console.log('Form data:', formData);
+      
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -28,7 +31,11 @@ export default function Login() {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+      
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (response.ok && data.success) {
         localStorage.setItem('authToken', data.token);
@@ -38,6 +45,7 @@ export default function Login() {
         setError(data.message || 'Authentication failed');
       }
     } catch (err) {
+      console.error('Login error:', err);
       setError('Network error. Please try again.');
     } finally {
       setLoading(false);
