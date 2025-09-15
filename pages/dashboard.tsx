@@ -33,7 +33,8 @@ export default function Dashboard() {
         return;
       }
 
-      const response = await fetch('/api/auth/profile', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const response = await fetch(`${baseUrl}/auth/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -54,7 +55,8 @@ export default function Dashboard() {
 
   const loadBookmarks = async (token: string) => {
     try {
-      const response = await fetch('/api/links', {
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://linkkeeper-api.onrender.com/api';
+      const response = await fetch(`${baseUrl}/links`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
