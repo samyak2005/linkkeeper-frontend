@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,6 +14,28 @@ export default function AddBookmark() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    // Check authentication
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      router.push('/login');
+      return;
+    }
+
+    // Handle URL parameters from bookmarklet
+    if (router.isReady) {
+      const { url, title, description } = router.query;
+      if (url || title || description) {
+        setFormData(prev => ({
+          ...prev,
+          url: (url as string) || prev.url,
+          title: (title as string) || prev.title,
+          description: (description as string) || prev.description
+        }));
+      }
+    }
+  }, [router.isReady, router.query, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -25,7 +25,7 @@ export default function Bookmarklet() {
     }
     
     // Open LinkKeeper in new window with pre-filled data
-    var linkkeeperUrl = '${process.env.NEXT_PUBLIC_APP_URL || 'https://linkkeeper.vercel.app'}/add-bookmark?';
+    var linkkeeperUrl = '${process.env.NEXT_PUBLIC_APP_URL || 'https://linkkeeper-frontend-pi.vercel.app'}/add-bookmark?';
     var params = new URLSearchParams({
       url: url,
       title: title,
